@@ -43,14 +43,6 @@ import {
 } from './state/fairlight'
 import { FairlightDynamicsResetProps } from './commands/Fairlight/common'
 import { MultiViewerPropertiesState } from './state/settings'
-import {
-	calculateGenerateMultiviewerLabelProps,
-	generateMultiviewerLabel,
-	hasInternalMultiviewerLabelGeneration,
-	loadFont,
-} from './lib/multiviewLabel'
-import { FontFace } from '@julusian/freetype2'
-import PLazy = require('p-lazy')
 import { TimeCommand } from './commands'
 import { TimeInfo } from './state/info'
 import { SomeAtemAudioLevels } from './state/levels'
@@ -286,43 +278,8 @@ export class BasicAtem extends EventEmitter<AtemEvents> {
 }
 
 export class Atem extends BasicAtem {
-	#multiviewerFontFace: Promise<FontFace>
-	#multiviewerFontScale: number
-
 	constructor(options?: AtemOptions) {
 		super(options)
-
-		this.#multiviewerFontFace = PLazy.from(async () => loadFont())
-		this.#multiviewerFontScale = 1.0
-	}
-
-	/**
-	 * Set the font to use for the multiviewer, or reset to default
-	 */
-	public async setMultiviewerFontFace(font: FontFace | string | null): Promise<void> {
-		let loadedFont: FontFace
-		if (font) {
-			if (typeof font === 'string') {
-				loadedFont = await loadFont(font)
-			} else {
-				loadedFont = font
-			}
-		} else {
-			loadedFont = await loadFont()
-		}
-
-		this.#multiviewerFontFace = Promise.resolve(loadedFont)
-	}
-	/**
-	 * Set the scale factor for the multiviewer text. Default is 1
-	 */
-	public setMultiviewerFontScale(scale: number | null): void {
-		if (typeof scale === 'number') {
-			if (scale <= 0) throw new Error('Scale must be greater than 0')
-			this.#multiviewerFontScale = scale
-		} else if (scale === null) {
-			this.#multiviewerFontScale = 1.0
-		}
 	}
 
 	public async changeProgramInput(input: number, me = 0): Promise<void> {
@@ -1196,48 +1153,5 @@ export class Atem extends BasicAtem {
 		const command = new Commands.AudioRoutingOutputCommand(sourceId)
 		command.updateProps(props)
 		return this.sendCommand(command)
-	}
-
-	public hasInternalMultiviewerLabelGeneration(): boolean {
-		return !!this.state && hasInternalMultiviewerLabelGeneration(this.state?.info.model)
-	}
-
-	/**
-	 * Write a custom multiviewer label buffer
-	 * @param inputId The input id
-	 * @param buffer Label buffer
-	 * @returns Promise that resolves once upload is complete
-	 */
-	public async writeMultiviewerLabel(inputId: number, buffer: Buffer): Promise<void> {
-		if (this.hasInternalMultiviewerLabelGeneration()) throw new Error(`ATEM doesn't support custom labels`)
-
-		// Verify the buffer doesnt contain data that is 'out of bounds' and will crash the atem
-		const badValues = new Set([255, 254])
-		for (const val of buffer) {
-			if (badValues.has(val)) {
-				throw new Error(`Buffer contains invalid value ${val}`)
-			}
-		}
-
-		return this.dataTransferManager.uploadMultiViewerLabel(inputId, buffer)
-	}
-
-	/**
-	 * Generate and upload a multiviewer label
-	 * @param inputId The input id
-	 * @param text Label text
-	 * @returns Promise that resolves once upload is complete
-	 */
-	public async drawMultiviewerLabel(inputId: number, text: string): Promise<void> {
-		if (this.hasInternalMultiviewerLabelGeneration()) throw new Error(`ATEM doesn't support custom labels`)
-
-		const props = calculateGenerateMultiviewerLabelProps(this.state ?? null)
-		if (!props) throw new Error(`Failed to determine render properties`)
-
-		const fontFace = await this.#multiviewerFontFace
-
-		const buffer = generateMultiviewerLabel(fontFace, this.#multiviewerFontScale, text, props)
-		// Note: we should probably validate the buffer looks like it doesn't contain crashy data, but as we generate we can trust it
-		return this.dataTransferManager.uploadMultiViewerLabel(inputId, buffer)
 	}
 }

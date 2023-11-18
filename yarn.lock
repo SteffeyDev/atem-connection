@@ -888,17 +888,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@julusian/freetype2@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "@julusian/freetype2@npm:1.1.2"
-  dependencies:
-    node-addon-api: ^5.0.0
-    node-gyp: latest
-    pkg-prebuilds: ^0.2.1
-  checksum: c690cf169908995c0cd3b2bd63f226c85ab9615d2da4c000644a311fd8ca736abae9e355ee7e2332dbaf1c59dd6be364f2711c6a31c4b0cfafdee28cb73a6beb
-  languageName: node
-  linkType: hard
-
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1749,7 +1738,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "atem-connection@workspace:."
   dependencies:
-    "@julusian/freetype2": ^1.1.2
     "@sinonjs/fake-timers": ^10.3.0
     "@sofie-automation/code-standard-preset": ~2.5.2
     "@types/debug": ^4.1.12
@@ -4868,15 +4856,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-addon-api@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "node-addon-api@npm:5.1.0"
-  dependencies:
-    node-gyp: latest
-  checksum: 2508bd2d2981945406243a7bd31362fc7af8b70b8b4d65f869c61731800058fb818cc2fd36c8eac714ddd0e568cc85becf5e165cebbdf7b5024d5151bbc75ea1
-  languageName: node
-  linkType: hard
-
 "node-gyp@npm:latest":
   version: 9.3.1
   resolution: "node-gyp@npm:9.3.1"
@@ -5364,18 +5343,6 @@ __metadata:
   dependencies:
     find-up: ^4.0.0
   checksum: 9863e3f35132bf99ae1636d31ff1e1e3501251d480336edb1c211133c8d58906bed80f154a1d723652df1fda91e01c7442c2eeaf9dc83157c7ae89087e43c8d6
-  languageName: node
-  linkType: hard
-
-"pkg-prebuilds@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "pkg-prebuilds@npm:0.2.1"
-  dependencies:
-    yargs: ^17.5.1
-  bin:
-    pkg-prebuilds-copy: bin/copy.mjs
-    pkg-prebuilds-verify: bin/verify.mjs
-  checksum: ba4c802200558d5aa89e96e474976633c1f964ef0b2035a70dfde4b83af782a6624f33b4b83c19dd85db7aa9097e259a55ad53d63d55d62ac5d524997f3bbd17
   languageName: node
   linkType: hard
 
@@ -6769,7 +6736,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.3.1, yargs@npm:^17.5.1":
+"yargs@npm:^17.3.1":
   version: 17.7.2
   resolution: "yargs@npm:17.7.2"
   dependencies:
