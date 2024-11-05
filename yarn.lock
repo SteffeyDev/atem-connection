@@ -1068,6 +1068,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@steffeydev/atem-connection@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@steffeydev/atem-connection@workspace:."
+  dependencies:
+    "@sinonjs/fake-timers": ^10.3.0
+    "@sofie-automation/code-standard-preset": ~2.5.2
+    "@types/debug": ^4.1.12
+    "@types/jest": ^29.5.10
+    "@types/node": ^14.18.63
+    "@types/object-path": ^0.11.4
+    "@types/sinon": ^10.0.20
+    "@types/sinonjs__fake-timers": ^8.1.5
+    debug: ^4.3.4
+    eventemitter3: ^4.0.7
+    exit-hook: ^2.2.1
+    jest: ^29.7.0
+    jest-extended: ^3.2.4
+    nanotimer: ^0.3.15
+    object-path: ^0.11.8
+    open-cli: ^7.2.0
+    p-queue: ^6.6.2
+    pinst: ^3.0.0
+    rimraf: ^5.0.5
+    sinon: ^14.0.2
+    threadedclass: ^1.2.1
+    ts-jest: ^29.1.1
+    ts-node: ^10.9.1
+    tslib: ^2.6.2
+    typedoc: ^0.24.8
+    typescript: ~4.9.5
+    wavefile: ^8.4.6
+  languageName: unknown
+  linkType: soft
+
 "@tokenizer/token@npm:^0.3.0":
   version: 0.3.0
   resolution: "@tokenizer/token@npm:0.3.0"
@@ -1733,41 +1767,6 @@ __metadata:
   checksum: 876231688c66400473ba505731df37ea436e574dd524520294cc3bbc54ea40334865e01fa0d074d74d036ee874ee7e62f486ea38bc421ee8e6a871c06f011766
   languageName: node
   linkType: hard
-
-"atem-connection@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "atem-connection@workspace:."
-  dependencies:
-    "@sinonjs/fake-timers": ^10.3.0
-    "@sofie-automation/code-standard-preset": ~2.5.2
-    "@types/debug": ^4.1.12
-    "@types/jest": ^29.5.10
-    "@types/node": ^14.18.63
-    "@types/object-path": ^0.11.4
-    "@types/sinon": ^10.0.20
-    "@types/sinonjs__fake-timers": ^8.1.5
-    debug: ^4.3.4
-    eventemitter3: ^4.0.7
-    exit-hook: ^2.2.1
-    jest: ^29.7.0
-    jest-extended: ^3.2.4
-    nanotimer: ^0.3.15
-    object-path: ^0.11.8
-    open-cli: ^7.2.0
-    p-lazy: ^3.1.0
-    p-queue: ^6.6.2
-    pinst: ^3.0.0
-    rimraf: ^5.0.5
-    sinon: ^14.0.2
-    threadedclass: ^1.2.1
-    ts-jest: ^29.1.1
-    ts-node: ^10.9.1
-    tslib: ^2.6.2
-    typedoc: ^0.24.8
-    typescript: ~4.9.5
-    wavefile: ^8.4.6
-  languageName: unknown
-  linkType: soft
 
 "babel-jest@npm:^29.7.0":
   version: 29.7.0
@@ -5103,13 +5102,6 @@ __metadata:
   version: 1.0.0
   resolution: "p-finally@npm:1.0.0"
   checksum: 93a654c53dc805dd5b5891bab16eb0ea46db8f66c4bfd99336ae929323b1af2b70a8b0654f8f1eae924b2b73d037031366d645f1fd18b3d30cbd15950cc4b1d4
-  languageName: node
-  linkType: hard
-
-"p-lazy@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "p-lazy@npm:3.1.0"
-  checksum: 289dbfd9de7d241498fd2d1ac9ec4e36de78672a92175f4b3c5fa9527b62f7549b06f549570b47f218d90b946f3a75611f9b8407934fe01512bc4fb56fdbf47d
   languageName: node
   linkType: hard
 

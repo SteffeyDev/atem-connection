@@ -1,6 +1,6 @@
 {
   "name": "@steffeydev/atem-connection",
-  "version": "3.5.0",
+  "version": "3.6.0-1",
   "description": "Typescript Node.js library for connecting with an ATEM switcher.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -24,7 +24,6 @@
     }
   ],
   "scripts": {
-    "postinstall": "./node_modules/.bin/husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
     "build": "rimraf dist && run build:main",
